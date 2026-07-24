@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09080d">
+  <title>AURA — Data Art Studio</title>
+  <meta name="description" content="Transform raw data into expressive abstract visual stories.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">AURA <span>Data Art Studio</span></a>
+    <div class="status"><i></i> Live canvas <span id="fps">30 fps</span></div>
+    <button id="exportButton" class="export">Export artwork</button>
+  </header>
+  <main>
+    <aside class="panel">
+      <section>
+        <p class="eyebrow">01 · Source</p>
+        <h1>Turn information<br>into atmosphere.</h1>
+        <p class="intro">Upload a CSV or paste data. Every number becomes motion, texture and form.</p>
+        <div class="tabs">
+          <button class="tab active" data-tab="upload">Upload CSV</button>
+          <button class="tab" data-tab="paste">Paste data</button>
+        </div>
+        <label id="dropZone" class="drop-zone">
+          <input id="fileInput" type="file" accept=".csv,text/csv">
+          <span class="drop-icon">↥</span><strong>Drop a CSV here</strong><small>or click to choose a file</small>
+        </label>
+        <div id="pastePanel" class="paste-panel hidden">
+          <textarea id="dataText" spellcheck="false" aria-label="CSV data"></textarea>
+          <button id="applyData">Apply pasted data</button>
+        </div>
+        <div class="file-card">
+          <span><i></i><b id="fileName">collective-mood.csv</b></span>
+          <small id="dataSummary">9 rows · 5 fields</small>
+        </div>
+      </section>
+      <section>
+        <p class="eyebrow">02 · Visual language</p>
+        <div id="modeGrid" class="mode-grid"></div>
+      </section>
+      <section>
+        <p class="eyebrow">03 · Color harmony</p>
+        <div class="color-row">
+          <label class="color-well"><input id="baseColor" type="color" value="#d95cff"><span id="colorHex">#D95CFF</span></label>
+          <select id="harmony" aria-label="Color harmony">
+            <option value="analogous">Analogous</option><option value="complementary">Complementary</option>
+            <option value="split">Split complementary</option><option value="triadic">Triadic</option>
+            <option value="tetradic">Tetradic</option><option value="square">Square</option>
+            <option value="monochrome">Monochrome</option><option value="warm">Warm spectrum</option>
+            <option value="cool">Cool spectrum</option><option value="pastel">Pastel</option>
+            <option value="neon">Neon</option><option value="earth">Earth</option><option value="ocean">Ocean</option>
+          </select>
+        </div>
+        <div id="swatches" class="swatches"></div>
+      </section>
+      <section><p class="eyebrow">04 · Atmosphere</p><div id="sliders"></div></section>
+    </aside>
+    <section class="stage-wrap">
+      <canvas id="artwork" aria-label="Generative artwork created from the selected data"></canvas>
+      <div class="stage-meta"><span id="artTitle">Collective Mood</span><span id="visualLabel">Particles · energy</span></div>
+      <div id="controlMessage" class="control-message" role="status"></div>
+      <div class="keyboard-help">
+        <span><kbd>Q</kbd> dataset</span><span><kbd>W</kbd> form</span><span><kbd>E</kbd> color</span>
+        <span><kbd>R</kbd> select knob</span><span><kbd>↺ ↻</kbd> adjust</span>
+      </div>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
